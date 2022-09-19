@@ -4,17 +4,20 @@
 const locators = {
     //Buttons
     continueButton: () => cy.get('button[type=submit]:contains("continue")', {timeout: 120000}),
-    tryOutButton: () => cy.get('button.try-out__btn', { timeout: 120000 }),
-    executeButton: () => cy.get('button.execute', { timeout: 120000 }),
+    loginButton: () => cy.get('.login', { timeout: 120000 }),
+    logoutButton: () => cy.get('.logout', { timeout: 120000 }),
+    signInButton: () => cy.get('#SubmitLogin', { timeout: 120000 }),
 
     // Inputs
-    lastNameInput: () => cy.get('input[id=lastName]', { timeout:120000}),
+    emailInput: () => cy.get('#email', { timeout:120000}),
+    passInput: () => cy.get('#passwd', { timeout:120000}),
 
     // Elements
+    menuElement: () => cy.get('a.sf-with-ul', { timeout:120000}),
     apiSectionElement: (selector) => cy.get('div[id='+selector+']', { timeout: 120000 }),
 
     //Text
-    pageTitleText: (title) => cy.get('h2.title').contains(title, { timeout: 120000 }),
+    pageTitleText: (title) => cy.get('.page-heading').contains(title, { timeout: 120000 }),
 
     // URL
     checkUrl: (url) => cy.url().should('include', url)
@@ -64,13 +67,43 @@ export class CommonPage {
 
     // Inputs
 
+    enterLoginInputs(userName,userPass){
+        locators
+            .emailInput()
+            .type(userName);
+        locators
+            .passInput()
+            .type(userPass);
+        locators
+            .signInButton()
+            .click()
+            .wait(2000);
+    }
     
     // Menu
 
-    clickOnApiElement(element) {
+    clickOnLogin(){
         locators
-            .navBarElement(element)
-            .click({force: true});
+            .loginButton()
+            .click()
+            .wait(2000);
+    }
+
+    clickOnLogout(){
+        locators
+            .logoutButton()
+            .click()
+            .wait(2000);
+    }
+
+    clickOnMenuElement(selector, element){
+            cy.get('nav').hoverElement(selector,element);
+        locators
+            .menuElement()
+            .contains(element)
+            .click()
+            .wait(2000);
+
     }
 
     /******************** End Interactions **************************/

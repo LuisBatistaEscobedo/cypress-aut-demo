@@ -23,3 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('hoverElement', (selector,element) => {
+    cy.get(selector, { timeout:120000}).contains(element).rightclick();
+});

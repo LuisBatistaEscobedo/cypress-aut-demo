@@ -19,17 +19,20 @@ export class CommonPageAppActions {
      * 
      */
 
-    validatePetApisSection(){
-        commonPage.verifyPageTitle('Swagger Petstore - OpenAPI 3.0 1.0.15 OAS3');
-        commonPage.useApi('operations-pet-addPet');
-        commonPage.verifyResponseCode();
+    loginUser(){
+        commonPage.clickOnLogin();
+        commonPage.verifyPageTitle('Authentication');
+        commonPage.enterLoginInputs('testaddress@address.com','asd123');
+        commonPage.verifyPageTitle('My account');
+        //commonPage.clickOnMenuElement('a.sf-with-ul','Women');
     }
 
-
-    validateEmailReceived(){
-        
-        
+    logoutUser(){
+        commonPage.clickOnLogout();
+        commonPage.verifyPageTitle('Authentication');
     }
+
+    
 
    
 
