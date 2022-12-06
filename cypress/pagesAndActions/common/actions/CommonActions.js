@@ -24,12 +24,23 @@ export class CommonPageAppActions {
         commonPage.verifyPageTitle('Authentication');
         commonPage.enterLoginInputs('testaddress@address.com','asd123');
         commonPage.verifyPageTitle('My account');
-        //commonPage.clickOnMenuElement('a.sf-with-ul','Women');
     }
 
     logoutUser(){
         commonPage.clickOnLogout();
         commonPage.verifyPageTitle('Authentication');
+    }
+
+    shoppingCartFlow(){
+        commonPage.headerElementHoover('Women');
+        commonPage.headerSubElementClick('T-shirts');
+        commonPage.addItemToCart();
+        commonPage.headerElementHoover('Dresses');
+        commonPage.headerSecondSubElementHoover('Casual Dresses');
+        commonPage.addItemToCart();
+        commonPage.eraseShoppingCart();
+        commonPage.cleanJsonFile();
+
     }
 
     
