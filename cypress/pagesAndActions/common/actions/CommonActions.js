@@ -8,7 +8,7 @@ const commonPage = new CommonPage();
  */
 
 /**
- * App Actions for Swagger Petstore
+ * App Actions for CommonFlows
  * 
  */
 
@@ -19,33 +19,14 @@ export class CommonPageAppActions {
      * 
      */
 
-    loginUser(){
-        commonPage.clickOnLogin();
-        commonPage.verifyPageTitle('Authentication');
-        commonPage.enterLoginInputs('testaddress@address.com','asd123');
-        commonPage.verifyPageTitle('My account');
+    googleSearch(){
+        
     }
 
     logoutUser(){
         commonPage.clickOnLogout();
         commonPage.verifyPageTitle('Authentication');
     }
-
-    shoppingCartFlow(){
-        commonPage.headerElementHoover('Women');
-        commonPage.headerSubElementClick('T-shirts');
-        commonPage.addItemToCart();
-        commonPage.headerElementHoover('Dresses');
-        commonPage.headerSecondSubElementHoover('Casual Dresses');
-        commonPage.addItemToCart();
-        commonPage.eraseShoppingCart();
-        commonPage.cleanJsonFile();
-
-    }
-
-    
-
-   
 
 
 }
