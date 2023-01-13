@@ -1,7 +1,7 @@
 # RESTfulAPI Challenge
 
 ## Overview
-This is a simple Cypress project that has the necessary components to execute tests for the  **http://automationpractice.com/**.
+This project is made as demo for Cypress and a way to explore all the cappabilitites this tools is able to provide for automation purposes.
 
 
 # Dependencies
@@ -9,7 +9,7 @@ This is a simple Cypress project that has the necessary components to execute te
 There are not too much dependencies installed on the **Cypress** repositories, most of them are used for data creation and accessibility for some of the test.
 
 - @faker-js/faker@7.5npm i moment-business-days.0
-- cypress@9.6.1
+- cypress@10.8.0
 - moment-business-days@1.2.0
 
 ## Folder Structure
