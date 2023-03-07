@@ -24,6 +24,16 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('hoverElement', (selector,element) => {
-    cy.get(selector, { timeout:120000}).contains(element).rightclick();
-});
+Cypress.Commands.add('getList',(filePath) => {
+    cy.request({
+      method: 'GET',
+      url: 'http://localhost:3000/devices',
+      headers: {
+        accept: '*/*',
+        'Content-Type': 'application/json-patch+json; v=1.0-public',
+      },
+    }).then((resp) => {
+      cy.writeFile(filePath, resp.body);
+    });
+  
+  });

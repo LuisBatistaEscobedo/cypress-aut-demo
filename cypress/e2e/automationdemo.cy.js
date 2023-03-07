@@ -10,6 +10,8 @@ describe('As registred user I want to be able to navigate and user all the curre
 
         cy.clearCookies();
         cy.clearLocalStorage();
+        cy.visit('/');
+
       })
 
     afterEach(() => {
@@ -18,38 +20,29 @@ describe('As registred user I want to be able to navigate and user all the curre
 
     })
 
-    it('GoogleSearch: It validates a user can succesfully make a search on Google.', () => {
-      cy.visit('https://www.google.com/?gws_rd=ssl');
+    it('NinjaChallenge: Retrieve full list of devices and validates on UI.', () => {
       
+      common.getDataFromListAndValidateOnUI();
         
       });
 
-    it('ShoppingCart: Fills the shopping cart and the empties it.', () => {
-      cy.visit('https://ultimateqa.com/fake-landing-page');
+    it('NinjaChallenge: Create device on the UI and verification.', () => {
       
+      common.addNewDeviceAndValidateOnUI();
 
       });
 
-    it('ShoppingCart: Fills the shopping cart and the empties it.', () => {
-      cy.visit('http://uitestingplayground.com/');
+    it('NinjaChallenge: Renames first devices on the list - API.', () => {
+
+      common.updateDevice();
 
       });
 
-    it.skip('ShoppingCart: Fills the shopping cart and the empties it.', () => {
-      cy.visit('https://www.saucedemo.com/');
+    it('NinjaChallenge: Delete last element from the List - API.', () => {
 
+      common.deleteDevice();
+      
       });
-
-    it('ShoppingCart: Fills the shopping cart and the empties it.', () => {
-      cy.visit('https://katalon-demo-cura.herokuapp.com/');
-  
-      });
-
-    it('ShoppingCart: Fills the shopping cart and the empties it.', () => {
-      cy.visit('http://automationpractice.com/');
-  
-      });
-
       
 
 })

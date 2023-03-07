@@ -2,9 +2,10 @@ import { CommonPage } from '../pages/CommonPage';
 import { faker } from '@faker-js/faker';
 
 const commonPage = new CommonPage();
+const path = './cypress/fixtures/items.json';
 
 /**
- * @module CommonPageAppActions
+ * @module CommonActions
  */
 
 /**
@@ -19,14 +20,31 @@ export class CommonPageAppActions {
      * 
      */
 
-    googleSearch(){
-        
+    getDataFromListAndValidateOnUI(){
+        cy.getList(path);
+        commonPage.verifyDeviceList();
+        commonPage.cleanJsonFile();
     }
 
-    logoutUser(){
-        commonPage.clickOnLogout();
-        commonPage.verifyPageTitle('Authentication');
+    addNewDeviceAndValidateOnUI(){
+        commonPage.addNewDeviceOnUI();
+        commonPage.verifyDevice();
+        commonPage.cleanJsonFile();
     }
 
+    updateDevice(){
+        cy.getList(path);
+        commonPage.updateFirstDevice();
+        commonPage.verifyFirstDeviceNameChange();
+        commonPage.cleanJsonFile();
+
+    }
+
+    deleteDevice(){
+        cy.getList(path);
+        commonPage.deleteLastDevice();
+        commonPage.verifyLastDeviceNameDeleted();
+        commonPage.cleanJsonFile();
+    }
 
 }
